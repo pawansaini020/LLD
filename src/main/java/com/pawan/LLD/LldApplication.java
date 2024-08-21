@@ -12,9 +12,9 @@ import java.util.Arrays;
 public class LldApplication {
 
 	public static void main(String[] args) {
-//		SpringApplication.run(LldApplication.class, args);
-		GameService gameService = new GameService(new GameManager());
-		gameService.playGame(100, 6, Arrays.asList("Pawan", "Viman", "Sushil"));
+		SpringApplication.run(LldApplication.class, args);
+//		GameService gameService = new GameService(new GameManager());
+//		gameService.playGame(100, 6, Arrays.asList("Pawan", "Viman", "Sushil"));
 	}
 
 }
