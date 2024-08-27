@@ -3,6 +3,7 @@ package com.pawan.LLD.lld.reviewsystem.controller;
 import com.pawan.LLD.lld.reviewsystem.dto.ReviewDTO;
 import com.pawan.LLD.lld.reviewsystem.enums.ReviewStatus;
 import com.pawan.LLD.lld.reviewsystem.service.ReviewService;
+import com.pawan.LLD.lld.reviewsystem.validation.ReviewValidation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,14 +30,18 @@ import java.util.Objects;
 public class ReviewController {
 
     private final ReviewService reviewService;
+    private final ReviewValidation reviewValidation;
 
     @Autowired
-    private ReviewController(ReviewService reviewService) {
+    private ReviewController(ReviewService reviewService,
+                             ReviewValidation reviewValidation) {
         this.reviewService = reviewService;
+        this.reviewValidation = reviewValidation;
     }
 
     @PostMapping(value = "/add")
-    public ResponseEntity<?> addReview(@RequestBody @Validated ReviewDTO reviewDTO) {
+    public ResponseEntity<?> addReview(@RequestBody ReviewDTO reviewDTO) {
+        reviewValidation.validateReviewRequest(reviewDTO);
         reviewService.addReview(reviewDTO);
         return new ResponseEntity<>(HttpStatus.OK);
     }
