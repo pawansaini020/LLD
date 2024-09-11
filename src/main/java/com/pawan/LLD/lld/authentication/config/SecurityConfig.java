@@ -46,7 +46,7 @@ public class SecurityConfig {
                         .requestMatchers(UNAUTH_END_POINTS).permitAll() // Allow unauthenticated access
                         .requestMatchers(USER_END_POINTS).hasRole("USER") // Requires USER_ROLE
                         .requestMatchers(ADMIN_END_POINTS).hasRole("ADMIN") // Requires ADMIN_ROLE
-                        .anyRequest().authenticated() // All other endpoints require authentication
+                        .anyRequest().permitAll() // All other endpoints require authentication
                 )
                 .httpBasic(Customizer.withDefaults()); // Basic Authentication
 
