@@ -1,5 +1,6 @@
 package com.pawan.LLD;
 
+import com.pawan.LLD.interview.Interview2;
 import com.pawan.LLD.lld.snakeandladder.manager.GameManager;
 import com.pawan.LLD.lld.snakeandladder.service.GameService;
 import org.springframework.boot.SpringApplication;
@@ -15,6 +16,9 @@ public class LldApplication {
 		SpringApplication.run(LldApplication.class, args);
 //		GameService gameService = new GameService(new GameManager());
 //		gameService.playGame(100, 6, Arrays.asList("Pawan", "Viman", "Sushil"));
+
+//		Interview2 interview2 = new Interview2();
+//		interview2.maxContinueSeq();
 	}
 
 }

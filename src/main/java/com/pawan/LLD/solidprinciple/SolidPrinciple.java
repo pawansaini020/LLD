@@ -1,4 +1,4 @@
-package com.pawan.LLD.soldprinciple;
+package com.pawan.LLD.solidprinciple;
 
 /**
  * @author Pawan Saini
