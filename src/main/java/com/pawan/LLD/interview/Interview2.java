@@ -9,6 +9,8 @@ import java.util.Set;
  */
 public class Interview2 {
 
+    //    moneyview
+
     public void maxDistinctSubStrLen() {
         int k = 3;
         String str = "aaabbccd";

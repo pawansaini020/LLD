@@ -29,6 +29,8 @@ import java.util.stream.Collectors;
 @Slf4j
 public class interview {
 
+    //    spocto.com
+
     public class Node {
         int data;
         Node next;
