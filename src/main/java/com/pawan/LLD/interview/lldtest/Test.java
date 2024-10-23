@@ -69,6 +69,7 @@ public class Test {
     class WhatsappCommValidation implements ICommValidation {
 
         // validate
+        //
     }
 
     class SMSCommValidation implements ICommValidation {
