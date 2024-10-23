@@ -7,10 +7,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.Objects;
 
-/**
- * @author Pawan Saini
- * Created on 28/08/24.
- */
+
 @Slf4j
 @Component
 public class ReviewValidation {

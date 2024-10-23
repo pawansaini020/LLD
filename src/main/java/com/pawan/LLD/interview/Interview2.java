@@ -3,10 +3,7 @@ package com.pawan.LLD.interview;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * @author Pawan Saini
- * Created on 04/10/24.
- */
+
 public class Interview2 {
 
     public void maxDistinctSubStrLen() {

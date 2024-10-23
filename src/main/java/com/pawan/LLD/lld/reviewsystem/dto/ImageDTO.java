@@ -6,10 +6,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-/**
- * @author Pawan Saini
- * Created on 25/08/24.
- */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

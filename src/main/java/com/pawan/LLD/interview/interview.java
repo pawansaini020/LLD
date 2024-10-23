@@ -22,10 +22,7 @@ import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-/**
- * @author Pawan Saini
- * Created on 28/09/24.
- */
+
 @Slf4j
 public class interview {
 

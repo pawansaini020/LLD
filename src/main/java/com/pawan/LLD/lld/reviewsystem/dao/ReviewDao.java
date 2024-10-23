@@ -10,10 +10,6 @@ import java.util.Objects;
 import java.util.Random;
 import java.util.concurrent.ConcurrentHashMap;
 
-/**
- * @author Pawan Saini
- * Created on 25/08/24.
- */
 @Slf4j
 @Component
 public class ReviewDao {

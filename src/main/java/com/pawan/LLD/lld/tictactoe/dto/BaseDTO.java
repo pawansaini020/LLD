@@ -7,10 +7,7 @@ import lombok.NoArgsConstructor;
 import java.util.Date;
 import java.util.Random;
 
-/**
- * @author Pawan Saini
- * Created on 01/09/24.
- */
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

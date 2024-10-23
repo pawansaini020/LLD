@@ -11,10 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-/**
- * @author Pawan Saini
- * Created on 01/09/24.
- */
+
 @Slf4j
 @RestController
 @RequestMapping(value = "/tic-tac-toe/api/va/game")

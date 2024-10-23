@@ -16,10 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Date;
 
-/**
- * @author Pawan Saini
- * Created on 21/08/24.
- */
+
 @Slf4j
 @RestController
 @RequestMapping(value = "/zoom-car/api/v1/booking")

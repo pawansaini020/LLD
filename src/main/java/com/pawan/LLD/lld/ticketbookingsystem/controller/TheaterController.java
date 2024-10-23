@@ -10,10 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Arrays;
 
-/**
- * @author Pawan Saini
- * Created on 20/08/24.
- */
+
 @RestController
 @RequestMapping(value = "/theater")
 @Slf4j

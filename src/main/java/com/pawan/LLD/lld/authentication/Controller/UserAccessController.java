@@ -17,10 +17,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
-/**
- * @author Pawan Saini
- * Created on 11/09/24.
- */
 @Slf4j
 @RestController
 @RequestMapping("/authentication/api/v1/user-access")

@@ -14,10 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-/**
- * @author Pawan Saini
- * Created on 12/08/24.
- */
+
 @Service
 @Slf4j
 public class BookingService {

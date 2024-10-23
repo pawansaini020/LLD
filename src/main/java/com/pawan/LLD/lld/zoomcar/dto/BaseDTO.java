@@ -8,10 +8,7 @@ import lombok.experimental.SuperBuilder;
 
 import java.util.Date;
 
-/**
- * @author Pawan Saini
- * Created on 21/08/24.
- */
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

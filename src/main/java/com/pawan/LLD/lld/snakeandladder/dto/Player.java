@@ -4,10 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-/**
- * @author Pawan Saini
- * Created on 11/08/24.
- */
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

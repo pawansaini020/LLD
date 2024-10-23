@@ -6,10 +6,7 @@ import com.pawan.LLD.lld.snakeandladder.dto.Player;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
-/**
- * @author Pawan Saini
- * Created on 11/08/24.
- */
+
 @Slf4j
 @Component
 public class GameManager {

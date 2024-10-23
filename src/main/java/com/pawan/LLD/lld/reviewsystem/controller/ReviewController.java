@@ -20,10 +20,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Objects;
 
-/**
- * @author Pawan Saini
- * Created on 25/08/24.
- */
 @RestController
 @RequestMapping(value = "/review-system/api/v1/review")
 @Slf4j

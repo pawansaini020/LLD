@@ -6,10 +6,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.Date;
 
-/**
- * @author Pawan Saini
- * Created on 11/09/24.
- */
 public class CustomUserDetails implements UserDetails {
 
     private final UserAccessDTO userAccessDTO;

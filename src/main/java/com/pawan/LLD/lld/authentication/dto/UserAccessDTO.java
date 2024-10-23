@@ -8,10 +8,6 @@ import org.springframework.security.core.GrantedAuthority;
 
 import java.util.Collection;
 
-/**
- * @author Pawan Saini
- * Created on 11/09/24.
- */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

@@ -18,10 +18,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
-/**
- * @author Pawan Saini
- * Created on 13/08/24.
- */
+
 @Slf4j
 @Component
 public class BookingManager {

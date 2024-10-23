@@ -9,10 +9,6 @@ import org.springframework.stereotype.Service;
 import java.util.Collections;
 import java.util.Date;
 
-/**
- * @author Pawan Saini
- * Created on 11/09/24.
- */
 @Service
 public class UserAccessService {
 

@@ -1,9 +1,6 @@
 package com.pawan.LLD.solidprinciple;
 
-/**
- * @author Pawan Saini
- * Created on 11/09/24.
- */
+
 public class SolidPrinciple {
 
 //    SOLID principles are an object-oriented approach that are applied to software structure design.

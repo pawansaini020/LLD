@@ -14,10 +14,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
-/**
- * @author Pawan Saini
- * Created on 11/09/24.
- */
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {

@@ -11,10 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.Date;
 import java.util.List;
 
-/**
- * @author Pawan Saini
- * Created on 21/08/24.
- */
+
 @Slf4j
 @Service
 public class ZoomVehicleService {

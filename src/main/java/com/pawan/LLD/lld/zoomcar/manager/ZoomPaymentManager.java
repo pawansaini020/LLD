@@ -8,10 +8,7 @@ import org.springframework.stereotype.Component;
 import java.util.Date;
 import java.util.UUID;
 
-/**
- * @author Pawan Saini
- * Created on 21/08/24.
- */
+
 @Component
 @Slf4j
 public class ZoomPaymentManager {

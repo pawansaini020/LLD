@@ -9,10 +9,7 @@ import lombok.experimental.SuperBuilder;
 import java.util.Date;
 import java.util.List;
 
-/**
- * @author Pawan Saini
- * Created on 12/08/24.
- */
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
