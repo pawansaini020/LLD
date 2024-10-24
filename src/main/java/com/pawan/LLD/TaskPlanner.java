@@ -28,21 +28,21 @@ public class TaskPlanner {
         this.sprints = new HashMap<>();
     }
 
-    public Task createTask(String title, String creator, TaskType type, Date dueDate, String... additionalParams) {
+    public Task createTask(String taskId, String title, String creator, TaskType type, Date dueDate, String... additionalParams) {
         Task task = null;
         switch (type) {
-            case FEATURE -> task = new Feature(title, creator, dueDate, additionalParams[0], TaskImpact.valueOf(additionalParams[1]));
-            case BUG -> task = new Bug(title, creator, dueDate, TaskSeverity.valueOf(additionalParams[0]));
-            case STORY -> task = new Story(title, creator, dueDate);
+            case FEATURE -> task = new Feature(taskId, title, creator, dueDate, additionalParams[0], TaskImpact.valueOf(additionalParams[1]));
+            case BUG -> task = new Bug(taskId, title, creator, dueDate, TaskSeverity.valueOf(additionalParams[0]));
+            case STORY -> task = new Story(taskId, title, creator, dueDate);
         }
         if(task!=null) {
-            tasks.put(title, task);
+            tasks.put(taskId, task);
         }
         return task;
     }
 
-    public void createSubTrack(String storyTitle, String subTrackTitle) {
-        Task task = tasks.get(storyTitle);
+    public void createSubTrack(String taskId, String subTrackTitle) {
+        Task task = tasks.get(taskId);
         if(task.getType() == TaskType.STORY) {
             Story story = (Story) task;
             SubTrack subTrack = new SubTrack(subTrackTitle);
@@ -52,8 +52,8 @@ public class TaskPlanner {
         }
     }
 
-    public void changeAssignee(String title, String assignee) {
-        Task task = tasks.get(title);
+    public void changeAssignee(String taskId, String assignee) {
+        Task task = tasks.get(taskId);
         if(task!=null) {
             task.setAssignee(assignee);
         }
@@ -63,11 +63,21 @@ public class TaskPlanner {
         sprints.put(sprintId, new Sprint(sprintId));
     }
 
-    public void addTaskToSprint(String sprintId, String taskTitle) {
+    public void addTaskToSprint(String sprintId, String taskId) {
         Sprint sprint = sprints.get(sprintId);
-        Task task = tasks.get(taskTitle);
+        Task task = tasks.get(taskId);
         if(sprint != null && task != null) {
+            task.setSprint(sprintId);
             sprint.addTask(task);
+        }
+    }
+
+    public void removeTaskFromSprint(String sprintId, String taskId) {
+        Sprint sprint = sprints.get(sprintId);
+        Task task = tasks.get(taskId);
+        if(sprint != null && task != null) {
+            task.setSprint(null);
+            sprint.removeTask(task);
         }
     }
 
@@ -75,13 +85,7 @@ public class TaskPlanner {
         System.out.println("Task for user: " + assignee);
         for (Task task : tasks.values()) {
             if(assignee.equals(task.getAssignee())) {
-                System.out.println("Task type: " + task.getType() + " title: " + task.getTitle()  + " status: " + task.getStatus() + " sprint: "+ task.getSprint());
-                if(task.getType() == TaskType.STORY) {
-                    Story story = (Story) task;
-                    for (SubTrack subTrack : story.getSubTracks()) {
-                        System.out.println("SubTrack: " + subTrack.getTitle() + ", Status: " + subTrack.getStatus());
-                    }
-                }
+                task.displayTask();
             }
         }
     }
@@ -92,8 +96,8 @@ public class TaskPlanner {
             sprint.displaySnapshot();
         }
     }
-    public void addTaskStatus(TaskStatus taskStatus, String taskTitle) throws Exception {
-        Task task = tasks.get(taskTitle);
+    public void addTaskStatus(TaskStatus taskStatus, String taskId) throws Exception {
+        Task task = tasks.get(taskId);
         if(task != null) {
             task.changeStatus(taskStatus);
         }

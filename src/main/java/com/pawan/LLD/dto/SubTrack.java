@@ -1,12 +1,8 @@
 package com.pawan.LLD.dto;
 
-import com.pawan.LLD.dto.Task;
-import com.pawan.LLD.enums.TaskSeverity;
 import com.pawan.LLD.enums.TaskStatus;
-import com.pawan.LLD.enums.TaskType;
 import lombok.Data;
 
-import java.util.Date;
 
 /**
  * @author Pawan Saini
@@ -21,5 +17,9 @@ public class SubTrack {
     public SubTrack(String title) {
         this.title = title;
         this.status = TaskStatus.OPEN;
+    }
+
+    protected void displaySubTrack() {
+        System.out.println("SubTrack: " + this.getTitle() + ", Status: " + this.getStatus());
     }
 }

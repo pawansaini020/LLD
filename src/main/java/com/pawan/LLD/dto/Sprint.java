@@ -20,7 +20,7 @@ public class Sprint {
 
 
     public void addTask(Task task) {
-        if(task.getSprint() == null) {
+        if(task.getSprint() != null) {
             task.setSprint(this.sprintId);
             tasks.add(task);
         }

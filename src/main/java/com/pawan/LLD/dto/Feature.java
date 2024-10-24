@@ -18,8 +18,8 @@ public class Feature extends Task {
     private String summary;
     private TaskImpact impact;
 
-    public Feature(String title, String creator, Date dueDate, String summary, TaskImpact impact) {
-        super(title, creator, TaskType.FEATURE, dueDate);
+    public Feature(String taskId, String title, String creator, Date dueDate, String summary, TaskImpact impact) {
+        super(taskId, title, creator, TaskType.FEATURE, dueDate);
         this.summary = summary;
         this.impact = impact;
     }
@@ -28,5 +28,11 @@ public class Feature extends Task {
     protected boolean isValidTransition(TaskStatus newStatus) {
         return EnumSet.of(TaskStatus.OPEN, TaskStatus.IN_PROGRESS, TaskStatus.TESTING, TaskStatus.DEPLOYED)
                 .contains(newStatus);
+    }
+
+    @Override
+    public void displayTask() {
+        String track = this.dueDate.getTime() < new Date().getTime() ? "On Track" : "Delayed";
+        System.out.println("Task id: " + this.getTaskId() +" Task type: " + this.getType() + " title: " + this.getTitle()  + " status: " + this.getStatus() + " sprint: "+ this.getSprint() + " track: " + track);
     }
 }

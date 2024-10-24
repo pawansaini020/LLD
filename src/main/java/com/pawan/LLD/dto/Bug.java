@@ -17,8 +17,8 @@ import java.util.EnumSet;
 public class Bug extends Task {
     private TaskSeverity severity;
 
-    public Bug(String title, String creator, Date dueDate, TaskSeverity severity) {
-        super(title, creator, TaskType.BUG, dueDate);
+    public Bug(String taskId, String title, String creator, Date dueDate, TaskSeverity severity) {
+        super(taskId, title, creator, TaskType.BUG, dueDate);
         this.severity = severity;
     }
 
@@ -26,4 +26,9 @@ public class Bug extends Task {
     protected boolean isValidTransition(TaskStatus newStatus) {
         return EnumSet.of(TaskStatus.OPEN, TaskStatus.IN_PROGRESS, TaskStatus.FIXED).contains(newStatus);
     }
+
+    @Override
+    public void displayTask() {
+        String track = this.dueDate.getTime() < new Date().getTime() ? "On Track" : "Delayed";
+        System.out.println("Task id: " + this.getTaskId() +" Task type: " + this.getType() + " title: " + this.getTitle()  + " status: " + this.getStatus() + " sprint: "+ this.getSprint() + " track: " + track);    }
 }

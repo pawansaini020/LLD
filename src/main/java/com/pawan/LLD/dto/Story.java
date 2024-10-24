@@ -22,8 +22,8 @@ public class Story extends Task {
     private String summary;
     private List<SubTrack> subTracks;
 
-    public Story(String title, String creator, Date dueDate) {
-        super(title, creator, TaskType.STORY, dueDate);
+    public Story(String taskId, String title, String creator, Date dueDate) {
+        super(taskId, title, creator, TaskType.STORY, dueDate);
         this.summary = summary;
         subTracks = new ArrayList<>();
     }
@@ -37,5 +37,14 @@ public class Story extends Task {
     @Override
     protected boolean isValidTransition(TaskStatus newStatus) {
         return EnumSet.of(TaskStatus.OPEN, TaskStatus.IN_PROGRESS, TaskStatus.COMPLETED).contains(newStatus);
+    }
+
+    @Override
+    public void displayTask() {
+        String track = this.dueDate.getTime() < new Date().getTime() ? "On Track" : "Delayed";
+        System.out.println("Task id: " + this.getTaskId() +" Task type: " + this.getType() + " title: " + this.getTitle()  + " status: " + this.getStatus() + " sprint: "+ this.getSprint() + " track: " + track);
+        for (SubTrack subTrack : this.getSubTracks()) {
+            subTrack.displaySubTrack();
+        }
     }
 }

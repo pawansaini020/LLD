@@ -15,6 +15,7 @@ import java.util.Date;
 @Data
 public class Task {
 
+    protected String taskId;
     protected String title;
     protected String creator;
     protected String assignee;
@@ -23,7 +24,8 @@ public class Task {
     protected Date dueDate;
     protected String sprint;
 
-    public Task(String title, String assignee, TaskType type, Date dueDate) {
+    public Task(String taskId, String title, String assignee, TaskType type, Date dueDate) {
+        this.taskId = taskId;
         this.title = title;
         this.assignee = assignee;
         this.type = type;
@@ -35,11 +37,15 @@ public class Task {
         if(isValidTransition(newStatus)) {
             this.status = newStatus;
         } else {
-            throw new Exception("Invalide status transition for: " + type + " task.");
+            System.out.println("Invalid status transition for taskId: " + taskId + " task type: " + type);
         }
     }
 
     protected boolean isValidTransition(TaskStatus newStatus) {
         return true; // Allow all transitions for now
+    }
+
+    public void displayTask() {
+
     }
 }

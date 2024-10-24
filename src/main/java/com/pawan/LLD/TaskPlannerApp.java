@@ -27,27 +27,44 @@ public class TaskPlannerApp {
         TaskPlanner planner = new TaskPlanner();
 
         // create task
-        planner.createTask("Feature 1", "Pawan", TaskType.FEATURE, new Date(), "Summary of feature", "HIGH");
-        planner.createTask("Feature 2", "Viman", TaskType.FEATURE, new Date(), "Summary of feature", "HIGH");
-        planner.createTask("Bug 1", "Saini", TaskType.BUG, new Date(), "P1");
-        planner.createTask("Story 1", "Kumar", TaskType.STORY, new Date(), "Story Summary 1");
+        planner.createTask("FEATURE-1", "Feature 1 title", "Pawan", TaskType.FEATURE, new Date(new Date().getTime() + 10*60*1000), "Summary of feature", "HIGH");
+        planner.createTask("FEATURE-2", "Feature 2 title", "Viman", TaskType.FEATURE, new Date(), "Summary of feature", "HIGH");
+        planner.createTask("BUG-1", "Bug 1 title", "Saini", TaskType.BUG, new Date(new Date().getTime() + 10*60*1000), "P1");
+        planner.createTask("STORY-1" ,"Story 1 title", "Kumar", TaskType.STORY, new Date(new Date().getTime() + 10*60*1000), "Story Summary 1");
 
         // subtracks
-        planner.createSubTrack("Story 1", "SubTrack 1");
-        planner.createSubTrack("Story 1", "SubTrack 2");
+        planner.createSubTrack("STORY-1", "SubTrack 1");
+        planner.createSubTrack("STORY-1", "SubTrack 2");
 
         planner.createSprint("Sprint 1");
-        planner.addTaskToSprint("Sprint 1", "Feature 1");
-        planner.addTaskToSprint("Sprint 1", "Story 1");
+        planner.addTaskToSprint("Sprint 1", "FEATURE-1");
+        planner.addTaskToSprint("Sprint 1", "FEATURE-2");
+        planner.addTaskToSprint("Sprint 1", "STORY-1");
+        planner.addTaskToSprint("Sprint 1", "BUG-1");
+
+        System.out.println("Below sprint task created : ");
+        planner.displaySprintSnapshot("Sprint 1");
 
         // Display tasks for user
-        planner.changeAssignee("Feature 2", "Ryan");
-        planner.changeAssignee("Story 1", "Peter");
+
+        planner.displaySprintSnapshot("Sprint 1");
+        planner.changeAssignee("FEATURE-2", "Ryan");
+        planner.changeAssignee("STORY-1", "Peter");
+        System.out.println("User task after assignee change : ");
         planner.displayTasksForUser("Pawan");
         planner.displayTasksForUser("Ryan");
         planner.displayTasksForUser("Peter");
 
         // Display sprint snapshot
+        System.out.println("Sprint task after assignee change : ");
+        planner.displaySprintSnapshot("Sprint 1");
+
+        // remove task from sprint
+        planner.addTaskToSprint("Sprint 1", "FEATURE-2");
+        planner.addTaskToSprint("Sprint 1", "BUG-1");
+
+        // Display sprint snapshot
+        System.out.println("Sprint task after remove task from sprint : ");
         planner.displaySprintSnapshot("Sprint 1");
     }
 
@@ -55,44 +72,43 @@ public class TaskPlannerApp {
         TaskPlanner planner = new TaskPlanner();
 
         // create task
-        planner.createTask("Feature 1", "Pawan", TaskType.FEATURE, new Date(), "Summary of feature", "HIGH");
-        planner.createTask("Feature 2", "Viman", TaskType.FEATURE, new Date(), "Summary of feature", "HIGH");
-        planner.createTask("Bug 1", "Saini", TaskType.BUG, new Date(), "P1");
-        planner.createTask("Story 1", "Kumar", TaskType.STORY, new Date(), "Story Summary 1");
+        planner.createTask("FEATURE-1", "Feature 1 title", "Pawan", TaskType.FEATURE, new Date(), "Summary of feature", "HIGH");
+        planner.createTask("FEATURE-2", "Feature 2 title", "Viman", TaskType.FEATURE, new Date(), "Summary of feature", "HIGH");
+        planner.createTask("BUG-1","Bug 1 title", "Saini", TaskType.BUG, new Date(), "P1");
+        planner.createTask("STORY-1", "Story 1 title", "Kumar", TaskType.STORY, new Date(), "Story Summary 1");
 
-        // subtracks
-        planner.createSubTrack("Story 1", "SubTrack 1");
-        planner.createSubTrack("Story 1", "SubTrack 2");
-
-        planner.createSprint("Sprint 1");
-        planner.addTaskToSprint("Sprint 1", "Feature 1");
-        planner.addTaskToSprint("Sprint 1", "Feature ");
-        planner.addTaskToSprint("Sprint 1", "Story 1");
-        planner.addTaskToSprint("Sprint 1", "Bug 1");
+        planner.createSprint("Sprint 2");
+        planner.addTaskToSprint("Sprint 2", "FEATURE-1");
+        planner.addTaskToSprint("Sprint 2", "FEATURE-2");
+        planner.addTaskToSprint("Sprint 2", "STORY-1");
+        planner.addTaskToSprint("Sprint 2", "BUG-1");
 
         // Display sprint snapshot
-        planner.displaySprintSnapshot("Sprint 1");
+        System.out.println("Below sprint task created : ");
+        planner.displaySprintSnapshot("Sprint 2");
 
         // Create Bug Feature
         planner.displayTasksForUser("Pawan");
-        planner.addTaskStatus(TaskStatus.IN_PROGRESS, "Feature 1");
+        planner.addTaskStatus(TaskStatus.IN_PROGRESS, "FEATURE-1");
         planner.displayTasksForUser("Pawan");
-        planner.addTaskStatus(TaskStatus.DEPLOYED, "Feature 1"); // Valid
+        planner.addTaskStatus(TaskStatus.DEPLOYED, "FEATURE-1"); // Valid
         planner.displayTasksForUser("Pawan");
 
         // Create Bug Task
         planner.displayTasksForUser("Saini");
-        planner.addTaskStatus(TaskStatus.FIXED, "Bug 1");
+        planner.addTaskStatus(TaskStatus.FIXED, "BUG-1");
         planner.displayTasksForUser("Saini");
-        planner.addTaskStatus(TaskStatus.COMPLETED, "Bug 1");
+        planner.addTaskStatus(TaskStatus.COMPLETED, "BUG-1");
         planner.displayTasksForUser("Saini");
 
         // Create Story Task
         planner.displayTasksForUser("Kumar");
-        planner.addTaskStatus(TaskStatus.COMPLETED, "Story 1");
+        planner.addTaskStatus(TaskStatus.COMPLETED, "STORY-1");
         planner.displayTasksForUser("Kumar");
-        planner.addTaskStatus(TaskStatus.FIXED, "Story 1");
+        planner.addTaskStatus(TaskStatus.FIXED, "STORY-1");
         planner.displayTasksForUser("Kumar");
 
+        System.out.println("Sprint task after sprint task status update : ");
+        planner.displaySprintSnapshot("Sprint 2");
     }
 }
