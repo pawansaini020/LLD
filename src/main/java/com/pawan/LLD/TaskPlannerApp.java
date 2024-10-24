@@ -60,8 +60,8 @@ public class TaskPlannerApp {
         planner.displaySprintSnapshot("Sprint 1");
 
         // remove task from sprint
-        planner.addTaskToSprint("Sprint 1", "FEATURE-2");
-        planner.addTaskToSprint("Sprint 1", "BUG-1");
+        planner.removeTaskFromSprint("Sprint 1", "FEATURE-2");
+        planner.removeTaskFromSprint("Sprint 1", "BUG-1");
 
         // Display sprint snapshot
         System.out.println("Sprint task after remove task from sprint : ");
