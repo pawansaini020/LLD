@@ -20,7 +20,8 @@ public class CacheManager<Key, Value> {
 
     public void put(String cacheName, Key key, Value value) {
         if(!CACHE_MAP.containsKey(cacheName)) {
-            CACHE_MAP.put(cacheName, new Cache(cacheName, 10, new HashMapStorage(), new LRUEvictionPolicy()));
+            IEvictionPolicy<Key> storage = EvictFactory.getEvictionPolicy("LRU");
+            CACHE_MAP.put(cacheName, new Cache(cacheName, 10, new HashMapStorage(), storage));
         }
         CACHE_MAP.get(cacheName).put(key, value);
     }
