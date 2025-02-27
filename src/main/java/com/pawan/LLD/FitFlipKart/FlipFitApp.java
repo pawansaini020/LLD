@@ -6,19 +6,21 @@ import java.util.Arrays;
 
 public class FlipFitApp {
     public static void main(String[] args) {
-        BookingService bookingService = BookingService.getInstance();
+        UserManager userManager = new UserManager();
+        BookingService bookingService = new BookingService(userManager);
 
         // Adding a fitness center
-        bookingService.addCenter("bellandur", "bangalore", Arrays.asList("Sunday","Monday"), 5);
+        bookingService.addCenter("bellandur", "bangalore", Arrays.asList("monday","sunday"), 5);
         bookingService.addWorkoutType("bellandur", WorkoutType.WEIGHTS);
+        bookingService.addWorkoutType("bellandur", WorkoutType.CARDIO);
         bookingService.addWorkoutType("bellandur", WorkoutType.YOGA);
         bookingService.addSlots("bellandur", WorkoutType.WEIGHTS, "06:00", 2);
         bookingService.addSlots("bellandur", WorkoutType.YOGA, "08:00", 1);
 
         // Registering users
-        bookingService.registerUser("Vivek", 16, "bangalore");
-        bookingService.registerUser("Pavan", 20, "bangalore");
-        bookingService.registerUser("Varun", 22, "bangalore");
+        userManager.registerUser("Vivek", 16, "bangalore");
+        userManager.registerUser("Pavan", 20, "bangalore");
+        userManager.registerUser("Varun", 22, "bangalore");
 
         // Checking available slots on a specific date
         System.out.println("\n--- Available Slots on 28-05-2021 ---");
