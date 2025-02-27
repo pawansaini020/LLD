@@ -2,20 +2,19 @@ package com.pawan.LLD.FitFlipKart;
 
 import java.util.Arrays;
 
-import java.util.Arrays;
-
 public class FlipFitApp {
     public static void main(String[] args) {
         UserManager userManager = new UserManager();
-        BookingService bookingService = new BookingService(userManager);
+        FitnessCenterManager fitnessCenterManager = new FitnessCenterManager();
+        BookingService bookingService = new BookingService(userManager, fitnessCenterManager);
 
         // Adding a fitness center
-        bookingService.addCenter("bellandur", "bangalore", Arrays.asList("monday","sunday"), 5);
-        bookingService.addWorkoutType("bellandur", WorkoutType.WEIGHTS);
-        bookingService.addWorkoutType("bellandur", WorkoutType.CARDIO);
-        bookingService.addWorkoutType("bellandur", WorkoutType.YOGA);
-        bookingService.addSlots("bellandur", WorkoutType.WEIGHTS, "06:00", 2);
-        bookingService.addSlots("bellandur", WorkoutType.YOGA, "08:00", 1);
+        fitnessCenterManager.addCenter("bellandur", "bangalore", Arrays.asList("monday","sunday"), 5);
+        fitnessCenterManager.addWorkoutType("bellandur", WorkoutType.WEIGHTS);
+        fitnessCenterManager.addWorkoutType("bellandur", WorkoutType.CARDIO);
+        fitnessCenterManager.addWorkoutType("bellandur", WorkoutType.YOGA);
+        fitnessCenterManager.addSlots("bellandur", WorkoutType.WEIGHTS, "06:00", 2);
+        fitnessCenterManager.addSlots("bellandur", WorkoutType.YOGA, "08:00", 1);
 
         // Registering users
         userManager.registerUser("Vivek", 16, "bangalore");
@@ -24,7 +23,7 @@ public class FlipFitApp {
 
         // Checking available slots on a specific date
         System.out.println("\n--- Available Slots on 28-05-2021 ---");
-        bookingService.getAvailableSlots("bellandur", "28-05-2021");
+        fitnessCenterManager.getAvailableSlots("bellandur", "28-05-2021");
 
         // Booking a slot
         System.out.println("\n--- Booking Slot ---");
@@ -36,7 +35,7 @@ public class FlipFitApp {
 
         // Cancel booking
         System.out.println("\n--- Cancelling Booking ---");
-        bookingService.cancelSlot("bellandur", "Vivek", 1, "28-05-2021");
+        bookingService.cancelSlotBooking("bellandur", "Vivek", 1, "28-05-2021");
 
         // Viewing user bookings after cancellation
         System.out.println("\n--- Vivek's Bookings on 28-05-2021 (After Cancellation) ---");
