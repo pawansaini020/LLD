@@ -25,16 +25,19 @@ public class FitnessCenterManager {
     }
 
     public void addWorkoutType(String centerName, WorkoutType workoutType) {
-        centers.get(centerName).addWorkoutType(workoutType);
+        FitnessCenter center = centers.get(centerName);
+        center.addWorkoutType(workoutType);
         log.info("Added new workout type : {}, {}", centerName, workoutType);
     }
 
     public void addSlots(String centerName, WorkoutType workoutType, String time, int capacity) {
-        centers.get(centerName).addSlot(workoutType, time, capacity);
+        FitnessCenter center = centers.get(centerName);
+        center.addSlot(workoutType, time, capacity);
     }
 
     public void getAvailableSlots(String centerName, String date) {
-        List<WorkoutSlot> slots = centers.get(centerName).getAvailableSlots(date);
+        FitnessCenter center = centers.get(centerName);
+        List<WorkoutSlot> slots = center.getAvailableSlots(date);
         for (WorkoutSlot slot : slots) {
             log.info(slot.getSlotId() + ", " + centerName + ", " + slot.getWorkoutType() + ", " + slot.getTime() + ", " + slot.getAvailableSeats(date));
         }

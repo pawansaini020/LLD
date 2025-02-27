@@ -8,12 +8,14 @@ import java.util.*;
 public class BookingService {
     private UserManager userManager;
     private FitnessCenterManager fitnessCenterManager;
-
+    private BookingManager bookingManager;
 
     public BookingService(UserManager userManager,
-                          FitnessCenterManager fitnessCenterManager) {
+                          FitnessCenterManager fitnessCenterManager,
+                          BookingManager bookingManager) {
         this.userManager = userManager;
         this.fitnessCenterManager = fitnessCenterManager;
+        this.bookingManager = bookingManager;
     }
 
     public void bookSlot(String centerName, String userName, int slotId, String date) {
@@ -21,7 +23,7 @@ public class BookingService {
         FitnessCenter center = fitnessCenterManager.getCenter(centerName);
         WorkoutSlot slot = center.getSlotById(slotId);
 
-        if (slot != null && slot.bookSeat(date)) {
+        if (slot != null && bookingManager.bookSeat(slot, date)) {
             user.addBooking(new Booking(slot.getSlotId(), centerName, slot.getWorkoutType(), slot.getTime(), date));
             log.info("Booking successful!");
         } else {
@@ -31,7 +33,8 @@ public class BookingService {
 
     public void cancelSlotBooking(String centerName, String userName, int slotId, String date) {
         userManager.getUser(userName).removeBooking(slotId);
-        fitnessCenterManager.getCenter(centerName).getSlotById(slotId).cancelSeat(date);
+        WorkoutSlot slot = fitnessCenterManager.getCenter(centerName).getSlotById(slotId);
+        bookingManager.cancelSeat(slot,  date);
         log.info("Booking cancelled successfully.");
     }
 

@@ -6,7 +6,8 @@ public class FlipFitApp {
     public static void main(String[] args) {
         UserManager userManager = new UserManager();
         FitnessCenterManager fitnessCenterManager = new FitnessCenterManager();
-        BookingService bookingService = new BookingService(userManager, fitnessCenterManager);
+        BookingManager bookingManager = new BookingManager();
+        BookingService bookingService = new BookingService(userManager, fitnessCenterManager, bookingManager);
 
         // Adding a fitness center
         fitnessCenterManager.addCenter("bellandur", "bangalore", Arrays.asList("monday","sunday"), 5);

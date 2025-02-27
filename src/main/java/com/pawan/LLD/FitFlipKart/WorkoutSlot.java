@@ -1,9 +1,11 @@
 package com.pawan.LLD.FitFlipKart;
 
+import lombok.Data;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
-
+@Data
 public class WorkoutSlot {
     private static final AtomicInteger ID_GENERATOR = new AtomicInteger(1);
     private int slotId;
@@ -34,21 +36,5 @@ public class WorkoutSlot {
 
     public int getAvailableSeats(String date) {
         return availableSeatsPerDate.getOrDefault(date, totalSeats);
-    }
-
-    public synchronized boolean bookSeat(String date) {
-        int seats = availableSeatsPerDate.getOrDefault(date, totalSeats);
-        if (seats > 0) {
-            availableSeatsPerDate.put(date, seats - 1);
-            return true;
-        }
-        return false;
-    }
-
-    public synchronized void cancelSeat(String date) {
-        int seats = availableSeatsPerDate.getOrDefault(date, totalSeats);
-        if (seats < totalSeats) {
-            availableSeatsPerDate.put(date, seats + 1);
-        }
     }
 }
