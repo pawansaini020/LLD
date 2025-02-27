@@ -1,7 +1,10 @@
 package com.pawan.LLD.FitFlipKart;
 
+import lombok.Data;
+
 import java.util.*;
 
+@Data
 public class User {
     private String name;
     private int age;

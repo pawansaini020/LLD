@@ -7,7 +7,8 @@ public class FlipFitApp {
         UserManager userManager = new UserManager();
         FitnessCenterManager fitnessCenterManager = new FitnessCenterManager();
         BookingManager bookingManager = new BookingManager();
-        BookingService bookingService = new BookingService(userManager, fitnessCenterManager, bookingManager);
+        WaitlistNotifier notifier = new WaitlistNotifier();
+        BookingService bookingService = new BookingService(userManager, fitnessCenterManager, bookingManager, notifier);
 
         // Adding a fitness center
         fitnessCenterManager.addCenter("bellandur", "bangalore", Arrays.asList("monday","sunday"), 5);
@@ -41,6 +42,14 @@ public class FlipFitApp {
         // Viewing user bookings after cancellation
         System.out.println("\n--- Vivek's Bookings on 28-05-2021 (After Cancellation) ---");
         bookingService.viewUserBookings("Vivek", "28-05-2021");
+
+        System.out.println("\n--- Booking Slot ---");
+        bookingService.bookSlot("bellandur", "Vivek", 1, "28-05-2021");
+
+        bookingService.bookSlot("bellandur", "Pavan", 1, "28-05-2021");
+        bookingService.bookSlot("bellandur", "Vivek", 1, "28-05-2021");
+
+        bookingService.cancelSlotBooking("bellandur", "Pavan", 1, "28-05-2021");
     }
 }
 

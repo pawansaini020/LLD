@@ -9,13 +9,16 @@ public class BookingService {
     private UserManager userManager;
     private FitnessCenterManager fitnessCenterManager;
     private BookingManager bookingManager;
+    private WaitlistNotifier notifier;
 
     public BookingService(UserManager userManager,
                           FitnessCenterManager fitnessCenterManager,
-                          BookingManager bookingManager) {
+                          BookingManager bookingManager,
+                          WaitlistNotifier notifier) {
         this.userManager = userManager;
         this.fitnessCenterManager = fitnessCenterManager;
         this.bookingManager = bookingManager;
+        this.notifier = notifier;
     }
 
     public void bookSlot(String centerName, String userName, int slotId, String date) {
@@ -28,6 +31,7 @@ public class BookingService {
             log.info("Booking successful!");
         } else {
             log.info("Booking failed!");
+            notifier.addToWaitlist(slotId, user);
         }
     }
 
@@ -35,6 +39,7 @@ public class BookingService {
         userManager.getUser(userName).removeBooking(slotId);
         WorkoutSlot slot = fitnessCenterManager.getCenter(centerName).getSlotById(slotId);
         bookingManager.cancelSeat(slot,  date);
+        notifier.notifyUsers(slotId);
         log.info("Booking cancelled successfully.");
     }
 
@@ -46,4 +51,5 @@ public class BookingService {
             bookings.forEach(System.out::println);
         }
     }
+
 }
