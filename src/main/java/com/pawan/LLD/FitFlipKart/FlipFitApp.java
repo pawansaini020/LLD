@@ -24,27 +24,27 @@ public class FlipFitApp {
         userManager.registerUser("Varun", 22, "bangalore");
 
         // Checking slot
-        System.out.println("\n--- Available Slots on 28-05-2021 ---");
+        System.out.println("--- Available Slots on 28-05-2021 ---");
         fitnessCenterManager.getAvailableSlots("bellandur", "28-05-2021");
 
         // Booking slot
-        System.out.println("\n--- Booking Slot ---");
+        System.out.println("--- Booking Slot ---");
         bookingService.bookSlot("bellandur", "Vivek", 1, "28-05-2021");
 
         // print bookings
-        System.out.println("\n--- Vivek's Bookings on 28-05-2021 ---");
+        System.out.println("--- Vivek's Bookings on 28-05-2021 ---");
         bookingService.viewUserBookings("Vivek", "28-05-2021");
 
         // Cancel booking
-        System.out.println("\n--- Cancelling Booking ---");
+        System.out.println("--- Cancelling Booking ---");
         bookingService.cancelSlotBooking("bellandur", "Vivek", 1, "28-05-2021");
 
         // print bookings
-        System.out.println("\n--- Vivek's Bookings on 28-05-2021 (After Cancellation) ---");
+        System.out.println("--- Vivek's Bookings on 28-05-2021 (After Cancellation) ---");
         bookingService.viewUserBookings("Vivek", "28-05-2021");
 
         // book slot
-        System.out.println("\n--- Booking Slot ---");
+        System.out.println("--- Booking Slot ---");
         bookingService.bookSlot("bellandur", "Vivek", 1, "28-05-2021");
 
         // waiting notifier
