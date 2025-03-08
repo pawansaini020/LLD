@@ -29,10 +29,10 @@
 //        this.customUserDetailsService = customUserDetailsService;
 //    }
 //
-////    @Bean
-////    public PasswordEncoder passwordEncoder() {
-////        return new BCryptPasswordEncoder();
-////    }
+//    @Bean
+//    public PasswordEncoder passwordEncoder() {
+//        return new BCryptPasswordEncoder();
+//    }
 //
 //    @Bean
 //    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -49,13 +49,13 @@
 //        return http.build();
 //    }
 //
-////    @Bean
-////    public UserDetailsService userDetailsService() {
-////        return customUserDetailsService;
-////    }
-////
-////    @Bean
-////    public DaoAuthenticationConfigurer<AuthenticationManagerBuilder, UserDetailsService> configure(AuthenticationManagerBuilder auth) throws Exception {
-////        return auth.userDetailsService(userDetailsService()).passwordEncoder(passwordEncoder());
-////    }
+//    @Bean
+//    public UserDetailsService userDetailsService() {
+//        return customUserDetailsService;
+//    }
+//
+//    @Bean
+//    public DaoAuthenticationConfigurer<AuthenticationManagerBuilder, UserDetailsService> configure(AuthenticationManagerBuilder auth) throws Exception {
+//        return auth.userDetailsService(userDetailsService()).passwordEncoder(passwordEncoder());
+//    }
 //}
